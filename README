@@ -1,0 +1,9 @@
+----------------------------------------------------
+                   About Scanner
+----------------------------------------------------
+
+Scanner is an security tool to check vulnerabilities on network targets, it's thinking is from an opensource project named Openvas(http://openvas.org/).
+
+This Scanner project is implemented with node.js, node.js is not the most efficient language to write some tools like this, but I choose it for the asynchronized IO, cause the scanner makes a lot of request via the network, so this the io operation is busy.
+
+And if somebody want to join this project, feel free to mail to timonwst[A--T]gmail.com.
