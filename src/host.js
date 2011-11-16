@@ -15,4 +15,9 @@ function taskEnd() {
 		}
 	});
 }
-taskEnd();
+
+var time = Math.floor(Math.random() * 20000);
+setTimeout(function() {
+	console.log(time);
+	taskEnd();
+}, time);

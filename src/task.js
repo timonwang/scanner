@@ -40,26 +40,27 @@ function startTask(data) {
 		// First implment is with process, it's conmulication modle is simple, consider use process pool or other modle for preformance reseaon.
 		var hostStrs = getHostStrs(target);
 		for(var i = hostStrs.length - 1; i >= 0; i--) {
-			hostStrs[i]
-		};
-		forkNewHost(host);
+			forkNewHost(hostStrs[i]);
+		}
 	}
 }
 
 function getHostStrs(target) {
 	var result = [];
+	target = target.replace(/[^\d\.-\/\;]/ig, '');
 	var hosts = target.split(";");
 	if(hosts.length > 1) {
 		for(var i = hosts.length - 1; i >= 0; i--) {
-			if(hosts[i].match(/(\d{1,3}\.){3}(\d{1,3}))/ig)) {
-				result.push(hosts);
-			} else if(hosts) {
-
+			if(hosts[i].match(/(\d{1,3}\.){3}(\d{1,3})/ig)) {
+				result.push(hosts[i]);
+			} else if(hosts[i].indexOf('/') != -1) {
+			} else if(hosts[i].indexOf('-') != -1) {
 			}
 		}
 	} else {
 		result.push(hosts);
 	}
+	return result;
 }
 
 function forkNewHost(host) {

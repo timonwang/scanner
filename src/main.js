@@ -9,7 +9,7 @@ task.on('message', function(msg) {
 task.send({
 	type : consts.TASK_START,
 	data : {
-		target : "10.101.0.1", //Scan target
+		target : "10.101.0.1;10.101.0.2;++", //Scan target
 		params : {} // The task params
 	}
 });
