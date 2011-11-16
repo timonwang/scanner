@@ -7,13 +7,22 @@ task.on('message', function(msg) {
 });
 
 task.send({
-	type : consts.TASK_START
+	type : consts.TASK_START,
+	data : {
+		target : "10.101.0.1", //Scan target
+		params : {} // The task params
+	}
 });
 
 function recordTaskData(taskData) {
 	if(taskData && taskData.type) {
-		task.send({
-			type : consts.TASK_STOP
-		});
+		switch(taskData.type) {
+			case consts.TASK_FINISHED:
+				task.kill();
+				break;
+			default:
+				console.log("Issue command from child.");
+				break;
+		}
 	}
 }
